@@ -2,5 +2,5 @@
 
 Put your names and UCIDs here:
 
-- Member #1: Name -- UCID
-- Member #2: Name -- UCID
+- Member #1: Tanzi Chowdhury -- 30143627
+- Member #2: Zaid Ahmed -- 30141162
