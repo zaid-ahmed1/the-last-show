@@ -51,15 +51,15 @@ button:hover{
 }
 
 .obit-container{
-  width: 17%;
+  width: 100%;
   height:fit-content;
-  min-width: 250px;
-  margin: 50px;
+  min-width: 100px;
+  margin: 30px;
   text-align: center;
   border: 1px solid darkgrey;
   border-radius: 2%;
   box-shadow: 0 2px #6a6a6a;
-  padding-left: 30px;
+  padding-left: 10px;
 }
 
 .obit-container img{
@@ -187,7 +187,14 @@ h6{
 
 @media screen and (max-width: 1656px) {
   .obit-container {
-    width: 40%;
+    width: 20%;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .obit-container {
+    width: 30%;
   }
 }
 

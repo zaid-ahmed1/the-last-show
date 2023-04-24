@@ -93,12 +93,13 @@ function App() {
   };
 
   return (
-    <div id="container">
+    <div>
       {!isOpen ? (<></>) : (<AddObituary closePop={closePop}/>)}
       <header>
         <h1>The Last Show</h1>
         <button onClick={openPop}>+ New Obituary</button>
       </header>
+    <div id="container">
       <section>
         {obits.length > 0 ? (
           obits.map((obit) => <Obituary key={obit.id} obit={obit} currentAudio={currentAudio} onPlay={playAudio} onStop={stopAudio} created={created}/>)
@@ -106,6 +107,7 @@ function App() {
           <h6 id="none">No Obituaries Yet</h6>
         )}
       </section>
+    </div>
     </div>
   );
 }
