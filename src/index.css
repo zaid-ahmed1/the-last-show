@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/satisfy');
 body,
 h1,
 h2,
@@ -24,7 +25,7 @@ a {
 header{
   display: flex;
   justify-content: right;
-  border-bottom: 2px solid rgb(102, 97, 97);
+  border-bottom: 0.5px solid rgb(148, 142, 142);
 }
 
 header h1{
@@ -34,14 +35,14 @@ header h1{
 
 button{
   background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
   padding: 20px 40px;
-  border-left: 2px solid rgb(102, 97, 97);
+  border-left: 0.5px solid rgb(148, 142, 142);
 }
 
 button:hover{
@@ -50,7 +51,7 @@ button:hover{
 }
 
 .obit-container{
-  width: 25%;
+  width: 17%;
   height:fit-content;
   min-width: 250px;
   margin: 50px;
@@ -58,6 +59,7 @@ button:hover{
   border: 1px solid darkgrey;
   border-radius: 2%;
   box-shadow: 0 2px #6a6a6a;
+  padding-left: 30px;
 }
 
 .obit-container img{
@@ -81,7 +83,8 @@ button:hover{
   font-size: 16pt;
   text-align: justify;
   margin: 10px 20px;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Satisfy', sans-serif;
+                                                
 }
 
 .play-pause-btn{
@@ -180,4 +183,16 @@ h6{
 #filename{
   background-color: rgba(169, 169, 169, 0.455);
   margin-left: 10px;
+}
+
+@media screen and (max-width: 1656px) {
+  .obit-container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .obit-container {
+    width: 100%;
+  }
 }

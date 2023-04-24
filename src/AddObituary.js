@@ -1,44 +1,49 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-function AddObit({ closePop }){
-    const [name, setName] = useState("");
-    const [born, setBorn] = useState("");
-    const [died, setDied] = useState("");
-    const [file, setFile] = useState(null);
+function AddObituary({ closePop }){
+  
     const [isFilled, setIsFilled] = useState(true);
-    
+
+    const[name,setName] = useState("");
+    const[bornWhen,setBornWhen] = useState("");
+    const[deathWhen,setDeathWhen] = useState("");
+    const[file,setFile] = useState(null);
+
     const close = () => {
         closePop();
+        window.location.reload();
     };
 
-    const submitObit = async () => {
+    const submitObit = async (e) => {
 
         document.getElementById("submit-btn").disabled = true;
+        e.preventDefault();
+        console.log(name,bornWhen,deathWhen,file);
         const data = new FormData();
         data.append("file",file);
-        console.log(data);
+        data.append("name",name);
+        data.append("bornWhen",bornWhen);
+        data.append("deathWhen",deathWhen);
 
-        if(file === null || name === "" || born === "" || died === ""){
+        if(file === null || name === "" || bornWhen === "" || deathWhen === ""){
             setIsFilled(false);
         } 
         else{
             setIsFilled(true);
             document.getElementById("submit-btn").innerHTML = "Generating... Please wait";
-            const url = "https://lw2slh4hrahrhflai6yqyuam7u0zlkpc.lambda-url.ca-central-1.on.aws/"+
-            `?name=${name}&year_born=${born}&year_died=${died}`;
-            const res = await fetch(url, {
-                method: "POST",
-                headers:{
-                    "Authentification": "",
-                    "id": uuidv4()
-                  },
-                body: data,
-                }
-            );
+            // CREATE OBITUARY FUNCTION:
+            const promise = await fetch("https://qaium7cwelsv3visoglyxrxvbm0jjlcr.lambda-url.ca-central-1.on.aws/", {
+            method: "POST",
+            headers:{
+                "Authentification": "",
+                "id":uuidv4()
+            },
+            body:data,
+        });
             
             try{
-                const response_content = await res.json();
+                const response_content = await promise.json();
                 const values = JSON.parse(response_content);
             }   catch{
                 console.log("error");
@@ -55,11 +60,11 @@ function AddObit({ closePop }){
     };
 
     const onBornChange = (e) => {
-        setBorn(e.target.value);
+        setBornWhen(e.target.value);
     };
 
     const onDiedChange = (e) => {
-        setDied(e.target.value);
+        setDeathWhen(e.target.value);
     };
     
 
@@ -87,4 +92,5 @@ function AddObit({ closePop }){
     );
 }
 
-export default AddObit;
+
+export default AddObituary;

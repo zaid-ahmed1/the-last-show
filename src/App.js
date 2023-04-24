@@ -1,9 +1,27 @@
 import Obituary from "./Obituary";
-import AddObituary from "./AddObituary";
-import { useEffect, useState } from "react";
+import AddObituary from "./AddObituary.js";
+import { useEffect, useState, createContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
+
+  const loadObits = async () => { 
+    const res = await fetch("https://3qwso4gxiyzyoeyml6xoroyrvu0ejhxx.lambda-url.ca-central-1.on.aws");
+    const data = await res.json();
+    for(var i = 0; i < data.data.length; i++){
+      console.log(data.data[i]);
+      addObituary(data.data[i].Name, data.data[i].Image, data.data[i].Born, data.data[i].Death, data.data[i].Text, data.data[i].mp3, data.data[i].id);
+    }
+  }
+  
+  useEffect(() => {
+    loadObits();
+  }, []);
+
+   
+
+
+ 
 
   const [isOpen, setIsOpen] = useState(false);
   const [obits, setObits] = useState([]);
@@ -28,7 +46,7 @@ function App() {
     }
   }
 
-  const AddObituary = (name, img, born, died, text, audio, id) => {
+  const addObituary = (name, img, born, died, text, audio, id) => {
     const newObit = {
         id: id,
         name: name, 
@@ -40,9 +58,12 @@ function App() {
       };
 
       setObits(prev => {
+      
         const obitIds = new Set(prev.map(obit => obit.id));
         return obitIds.has(id) ? prev : [newObit, ...prev];
       });
+
+
   };
 
   const openPop = () => {
