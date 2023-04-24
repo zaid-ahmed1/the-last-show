@@ -40,7 +40,7 @@ function Obituary({obit, currentAudio, onPlay, onStop, created}){
         <div className="obit-container" onLoad={created}>
             <img onClick={hideText} src={obit.img.replace("/upload/", "/upload/e_art:zorro/")}/>
             <h2 className="name">{obit.name}</h2>
-            <h3 className="date">{obit.born} - {obit.died}</h3>
+            <h3 className="date">{obit.born} to {obit.died}</h3>
             <p id={"text-" + obit.id}>{obit.text}</p>
             <button id={"btn-" + obit.id} onClick={toggle} className="play-pause-btn">&#9654;</button>
         </div>
