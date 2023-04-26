@@ -10,14 +10,18 @@ function Obituary({obit, currentAudio, onPlay, onStop, created}){
         if (btn.innerHTML === "▶") {
             onPlay(audio);
             btn.innerHTML = "&#x23F8;";
+            
             audio.addEventListener("ended", () => {
                 btn.innerHTML = "&#9654;";
                 onStop();
             });
+            
             audio.addEventListener("pause", () => {
                 btn.innerHTML = "&#9654;";
             });
-        } else {
+        } 
+        
+        else {
             btn.innerHTML = "&#9654;";
             onStop();
         }
@@ -30,7 +34,9 @@ function Obituary({obit, currentAudio, onPlay, onStop, created}){
             text.style.display = "block";
             btn.style.display = "inline";
 
-        } else{
+        } 
+        
+        else{
             text.style.display = "none";
             btn.style.display = "none";
         }
