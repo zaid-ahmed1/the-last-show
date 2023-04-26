@@ -4,13 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 function AddObituary({ closePop }){
   
     const [isFilled, setIsFilled] = useState(true);
-
     const[name,setName] = useState("");
     const[bornWhen,setBornWhen] = useState("");
     const[deathWhen,setDeathWhen] = useState("");
     const[file,setFile] = useState(null);
-
-
 
     const close = () => {
         closePop();
@@ -30,9 +27,11 @@ function AddObituary({ closePop }){
         if(file === null || name === "" || bornWhen === "" || deathWhen === ""){
             setIsFilled(false);
         } 
+        
         else{
             setIsFilled(true);
             document.getElementById("submit-btn").innerHTML = "Generating... Please wait";
+            
             // CREATE OBITUARY FUNCTION:
             const promise = await fetch("https://5dvirwy4sayoeqep5nvk4dib3e0grgfo.lambda-url.ca-central-1.on.aws/", {
             method: "POST",
@@ -46,7 +45,8 @@ function AddObituary({ closePop }){
             try{
                 const response_content = await promise.json();
                 const values = JSON.parse(response_content);
-            }   catch{
+            }   
+            catch{
                 console.log("error");
             }
             
