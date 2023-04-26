@@ -10,9 +10,10 @@ function AddObituary({ closePop }){
     const[deathWhen,setDeathWhen] = useState("");
     const[file,setFile] = useState(null);
 
+
+
     const close = () => {
         closePop();
-        window.location.reload();
     };
 
     const submitObit = async (e) => {
@@ -33,7 +34,7 @@ function AddObituary({ closePop }){
             setIsFilled(true);
             document.getElementById("submit-btn").innerHTML = "Generating... Please wait";
             // CREATE OBITUARY FUNCTION:
-            const promise = await fetch("https://qaium7cwelsv3visoglyxrxvbm0jjlcr.lambda-url.ca-central-1.on.aws/", {
+            const promise = await fetch("https://5dvirwy4sayoeqep5nvk4dib3e0grgfo.lambda-url.ca-central-1.on.aws/", {
             method: "POST",
             headers:{
                 "Authentification": "",
@@ -50,6 +51,7 @@ function AddObituary({ closePop }){
             }
             
             close();
+            window.location.reload()
             document.getElementById("submit-btn").disabled = false;
         }
     };

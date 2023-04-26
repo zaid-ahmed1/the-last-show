@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
 
   const loadObits = async () => { 
-    const res = await fetch("https://3qwso4gxiyzyoeyml6xoroyrvu0ejhxx.lambda-url.ca-central-1.on.aws");
+    const res = await fetch("https://v6egjk6sfwfzza3nuqigj3ecme0zwmun.lambda-url.ca-central-1.on.aws/");
     const data = await res.json();
     for(var i = 0; i < data.data.length; i++){
       console.log(data.data[i]);
@@ -18,10 +18,6 @@ function App() {
     loadObits();
   }, []);
 
-   
-
-
- 
 
   const [isOpen, setIsOpen] = useState(false);
   const [obits, setObits] = useState([]);
