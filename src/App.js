@@ -25,6 +25,7 @@ function App() {
 
   const created = () => {
     if(obits.length < 1) return;
+    
     for(let i = 0; i < obits.length; i++){
       if(i === 0){
         let id = obits[i].id;
@@ -32,7 +33,9 @@ function App() {
         let btn = document.getElementById("btn-" + id);
         text.style.display = "block";
         btn.style.display = "inline";
-      } else{
+      } 
+      
+      else{
         let id = obits[i].id;
         let text = document.getElementById("text-" + id);
         let btn = document.getElementById("btn-" + id);
@@ -54,13 +57,10 @@ function App() {
       };
 
       setObits(prev => {
-      
         const obitIds = new Set(prev.map(obit => obit.id));
         return obitIds.has(id) ? prev : [newObit, ...prev];
       });
-
-
-  };
+ };
 
   const openPop = () => {
     setIsOpen(true);
@@ -76,6 +76,7 @@ function App() {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
+    
     setCurrentAudio(audio);
     audio.play();
   };
